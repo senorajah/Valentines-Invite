@@ -10,7 +10,6 @@
   height: 100%;
   pointer-events: none; 
   overflow: hidden;
-  z-index: 0; 
 }
 
 /* Each heart */
@@ -56,7 +55,7 @@ section{
     background: #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 5s ease;
 }
 #greet{
     font-family: "Satisfy", cursive;
@@ -92,17 +91,31 @@ button:hover{
     background: #ff1a4d;
     transform: scale(1.05);
 }
+#letter{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh; /* so it fills the viewport */
+  box-sizing: border-box;
 
+}
 .envelope {
-  width: 300px;
-  height: 200px;
+  perspective: 600px;
+  width: 800px;
+  max-width: 90%;  /* responsive on smaller screens */
   background: #fff;
   border: 2px solid #ff4d6d;
   border-radius: 8px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  perspective: 600px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+@media screen and (min-width: 768px) {
+  .envelope {
+    width: 500px;
+  }
 }
 
 .flap {
@@ -110,16 +123,46 @@ button:hover{
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background: #ff4d6d;
   transform-origin: top center;
-  transition: transform 1s ease;
-  z-index: 2;
+  transition: transform 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s;
+  backface-visibility: hidden; 
 }
 
 .letter-content {
-  padding: 20px;
   opacity: 0;
-  transition: opacity 1s ease 0.8s;
-  z-index: 1;
+  transition: opacity 1s ease 2s;
+  text-align: justify;
+  padding: 20px 20px;
+  line-height: 1.6;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+}
+.letter-content h1{
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: #ff4d6d;
+}
+.letter-content p{
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+}
+.letter-content h3{
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+  color: #ff4d6d;
 }
