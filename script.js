@@ -1,22 +1,23 @@
 const nextBTN = document.getElementById ("nextBTN");
 const landing = document.getElementById ("landing");
 const letter = document.getElementById ("letter");
-const flap = document.querySelector(".flap");
 const letterContent = document.querySelector(".letter-content");
 
 nextBTN.addEventListener("click", () => {
+
+  const revealHeart = document.createElement("div");
+  revealHeart.classList.add("heart-reveal");
+  revealHeart.textContent=("❤️");
+  document.body.appendChild(revealHeart);
+
+  revealHeart.addEventListener("animationend", () =>{
+
     landing.classList.add("hidden");
-    letter.classList.remove("hidden");
-
-    setTimeout(() => {
-     flap.style.transform = "rotateX(180deg)";
-    }, 50); 
-
-    setTimeout(() => {})
-    letterContent.style.opacity = "1";
-  },600);
-
-    
+    letter.classList.remove("hidden")
+    letterContent.style.opacity ="1"
+    revealHeart.remove();
+  });
+});
 
 const hearts = document.querySelectorAll('.heart');
 
