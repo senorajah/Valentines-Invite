@@ -53,22 +53,22 @@
     <section id="letter" class="hidden">
         <div class="envelope">
             <div class="letter-content">
-                <h1>Name</h1>
+            
                 <p>
-                    Hallo inday, I’m really glad you’re here.<br><br>
-                    If you’re wondering why you’re reading this on a website instead of a normal message… same. I actually stopped and thought, “Di mani ako” while making this
-                    pero here we are.<br>   (Hays, things you do for love, hehe)<br><br>
-                    We’ve had our on-and-off moments where timing and priorities didn’t quite line up. Nothing bad, just life doing what it does.<br> Still, I realized I didn’t want to ask you out in the usual casual way and ma wala napod, 
+                    Hallo inday,<br><br>
+                    If you’re wondering why this is on a website instead of a normal message… same. I even thought, “Di mani ako,” while making this but here we are.
+                      <br>   (Hays, things you do for love, HAHA)<br><br>
+                    We’ve had our on-and-off moments where timing and priorities didn’t quite line up.<br> Still, I want to ask you out pero not in the usual casual way, 
                     so I wanted to do something a little more intentional.<br> (Basin pod imo papa maka basa kung magbilin kog letter sa inyo gate)<br><br>
                     I enjoy being around you gyud. I like watching the alom dapit sa imo mata, haha.<br><br>
                     Anyways, I wanted to ask you<br><br>
-                    <h3>Can I take you out this Valentine’s Day?</h3><br>
-                    <p>No big expectations, no pressure. Just us, some time together.</p>
+                    <h3>Can I take you out?</h3><br>
+                    <p>No big expectations, no pressure. Just us and some time together.</p>
                 </p>
 
-                <div class="letter-anser">
-                    <button>YES</button>
-                    <button>NO</button>
+                <div class="letter-answer">
+                    <button onclick="sendAnswer('YES')">YES</button>
+                    <button onclick="sendAnswer('NO')">NO</button>
                 </div>
 
             </div>
@@ -76,6 +76,50 @@
     </section>
     
 </main>
+<!-- Firebase App -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  // Your Firebase config (paste yours here)
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyD8Pu_d6TGbE6QcsSoDXFheLkOU7l4junQ",
+  authDomain: "inviatation-ana.firebaseapp.com",
+  databaseURL: "https://inviatation-ana-default-rtdb.firebaseio.com",
+  projectId: "inviatation-ana",
+  storageBucket: "inviatation-ana.firebasestorage.app",
+  messagingSenderId: "1006301579420",
+  appId: "1:1006301579420:web:36b10f39b5910781848559",
+  measurementId: "G-DTLHEYLMT8"
+};
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Create database reference
+  const database = firebase.database();
+</script>
+<script>
+  function sendAnswer(answer) {
+    const name = prompt("Enter your name:");
+
+    database.ref("rsvps").push({
+      name: name,
+      answer: answer,
+      timestamp: new Date().toISOString()
+    })
+    .then(() => {
+      alert("RSVP saved! Thank you 😊");
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Something went wrong.");
+    });
+  }
+</script>
 
 <script src="script.js"></script>
 
