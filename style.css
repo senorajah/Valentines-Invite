@@ -131,9 +131,8 @@ button:hover{
   display: flex;
 }
 .envelope {
-  perspective: 600px;
-  width: 900px;
-  max-width: 95%; 
+  width: 100%;
+  max-width: 500px; 
   background: #fff;
   border: 2px solid #ff4d6d;
   border-radius: 8px;
@@ -141,25 +140,29 @@ button:hover{
   margin: 0 auto;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 40px 60px;
+  padding: 20px;
 }
-/* @media screen and (min-width: 768px) {
-  .envelope {
-    width: 500px;
-  }
-} */
-
 .letter-content {
-  max-width: 800px;
-  opacity: 0;
-  transition: opacity 1s ease 2s;
-  text-align: justify;
-  padding: 20px 20px;
-  line-height: 1.5;
+  max-width: 100%;
+  padding: 10px 15px;
   color: #333;
   font-family: Arial, sans-serif;
-  margin: 0 auto;
 }
+
+.envelope {
+  width: 100%;
+  max-width: 500px; /* desktop max */
+  padding: 20px; /* smaller padding for mobile */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.letter-content {
+  max-width: 100%;
+  padding: 10px 15px; /* smaller inner padding */
+  text-align: justify;
+}
+
 .letter-content h1, .letter-content h3, .letter-content p {
   margin-top: 0;
   margin-bottom: 10px;
@@ -191,4 +194,17 @@ button:hover{
     "SOFT" 0,
     "WONK" 0;
   color: #ff4d6d;
+}
+.letter-answer{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 480px) {
+  .letter-answer button {
+    flex: 1 1 45%;   /* take ~45% each, side by side */
+    min-width: 100px; /* ensure buttons don’t shrink too small */
+    font-size: 1rem;  /* keep readable text */
+  }
 }
